@@ -38,6 +38,8 @@ export class ListPage implements OnInit {
     //push object to the list item array
     this.listItems.push(item);
     
+    //sort before saving
+    this.sortList();
     //save the changes to localstorage
     this.saveList();
   }
@@ -74,6 +76,13 @@ export class ListPage implements OnInit {
     })
     .catch((error)=>{
       console.log(error);
+    });
+  }
+
+  //sorting the list
+  sortList(){
+    this.listItems.sort((item1, item2)=>{
+      return item2.id - item1.id;
     });
   }
 
